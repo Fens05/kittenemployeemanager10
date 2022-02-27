@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manger.js');
 const Engineer = require('./lib/Enginer.js');
 const intern = require('./lib/Intern.js');
-
+const fs = require( 'fs' );
 
 
 
@@ -61,7 +61,62 @@ const manangerList = [ {
 	}
 
 ];
+const engineerList = [
+    {
+		type: 'input',
+		message: 'What is this engineer\'s Name?',
+		name: 'name',
+		validate: ( input ) => {
+			if( input !== '' && !( /\d/.test( input ) ) ) {
+				return true;
+			}
+			return 'Please enter a name without numeric characters.';
+		}
+	},
+	{
+		type: 'input',
+		message: 'What is this engineer\'s ID?',
+		name: 'id',
+		validate: ( input ) => {
+			if( input !== '' ) {
+				return true;
+			}
+			return 'Please enter an ID.';
+		}
+	},
+	{
+		type: 'input',
+		message: 'What is this engineer\'s Email?',
+		name: 'email',
+		validate: ( input ) => {
+			if( input !== '' && /@/.test( input ) ) {
+				return true;
+			}
+			return 'Please enter a full valid Email.';
+		}
+	},
+	{
+		type: 'input',
+		message: 'What is this engineer\'s GitHub Username?',
+		name: 'github',
+		validate: ( input ) => {
+			if( input !== '' ) {
+				return true;
+			}
+			return 'Please enter a GitHub Username.';
+		}
+	}
+];
+
+let teamEmpployees = [];
 
 
+const askEngineerInfo = () => {
+    return inquirer.prompt(engineerList)
+    .then(( engineerAnswers)=> {
+        teamEmpployees.push(new Engineer(engieneerAnseres));
+        return askforNextTeamEmpolyee();
+    });
+};
 
 
