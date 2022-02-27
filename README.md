@@ -10,4 +10,4 @@
 <p> This website is to </p>
 
 ## video 
-<img src="https://vimeo.com/676588229">
+<video src="https://vimeo.com/676588229"></video>
