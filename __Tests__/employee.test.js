@@ -1,31 +1,60 @@
+const Employee = require( '../lib/Employee' );
 
-const Employee = require('../lib/Employee');
+describe( 'Employee class', () => {
+	describe( 'Constructor', () => {
+		it( 'Should create an object with \'name\', \'id\', and \'email\' properties set to the arguments provided', () => {
+			const name = 'employeeName';
+			const id = 1;
+			const email = 'email@email.com';
+			const obj = new Employee( name, id, email );
 
-test('creates an employee object', () => {
-    const employee = new Employee('Hamish Meyer','n38376', 'hamishm@gml.com');
+			expect( obj.name ).toEqual( name );
+			expect( obj.id ).toEqual( id );
+			expect( obj.email ).toEqual( email );
+		} );
+	} );
 
-});
+	describe( 'getName', () => {
+		it( 'Should return the name of the employee', () => {
+			const name = 'employeeName';
+			const id = 1;
+			const email = 'email@email.com';
+			const obj = new Employee( name, id, email );
 
-test('gets employee name', () => {
-    const employee = new Employee('Hamish Meyer','n38376', 'hamishm@gml.com');
+			expect( obj.getName() ).toEqual( name );
+		} );
+	} );
 
-    expect(employee.getName()).toEqual(expect.stringContaining());
-});
+	describe( 'getId', () => {
+		it( 'Should return the id of the employee', () => {
+			const name = 'employeeName';
+			const id = 1;
+			const email = 'email@email.com';
+			const obj = new Employee( name, id, email );
 
-test('gets employee id', () => {
-    const employee = new Employee('Hamish Meyer','n38376', 'hamishm@gml.com');
+			expect( obj.getId() ).toEqual( id );
+		} );
+	} );
 
-    expect(employee.getId()).toEqual(expect.any(Number));
-});
+	describe( 'getEmail', () => {
+		it( 'Should return the email of the employee', () => {
+			const name = 'employeeName';
+			const id = 1;
+			const email = 'email@email.com';
+			const obj = new Employee( name, id, email );
 
-test('gets employee email', () => {
-    const employee = new Employee('Hamish Meyer','n38376', 'hamishm@gml.com');
+			expect( obj.getEmail() ).toEqual( email );
+		} );
+	} );
 
-    expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
-});
+	describe( 'getRole', () => {
+		it( 'Should return the role of the employee', () => {
+			const name = 'employeeName';
+			const id = 1;
+			const email = 'email@email.com';
+			const obj = new Employee( name, id, email );
 
-test('gets the employee role', () => {
-    const employee = new Employee('Hamish Meyer','n38376', 'Employee','hamishm@gml.com');
-
-    expect(employee.role).toEqual('Employee');
-});
+			expect( obj.getRole() ).toEqual( 'Employee' );
+		} );
+	} );
+} );
